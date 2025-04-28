@@ -31,7 +31,7 @@ class CTPersistentDataset(monai.data.PersistentDataset):
             hashfile = self.cache_dir / f"{data_item_md5}.pt"
 
         if hashfile is not None and hashfile.is_file():
-            cached_image = torch.load(hashfile)
+            cached_image = torch.load(hashfile, weights_only=False)
             _item_transformed["image"] = cached_image
             return _item_transformed
 

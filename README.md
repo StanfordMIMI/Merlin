@@ -8,7 +8,7 @@
 
 ## ⚡️ Installation
 
-To install Merlin (Python 3.9 required), you can simply run:
+To install Merlin, you can simply run:
 
 ```python
 pip install merlin-vlm
@@ -17,12 +17,15 @@ pip install merlin-vlm
 For an editable installation, use the following commands to clone and install this repository.
 
 ```python
-conda create -name merlin python==3.9.0 # python == 3.9
+conda create -name merlin
 conda activate merlin
 
 git clone https://github.com/StanfordMIMI/Merlin.git
 cd merlin
 pip install -e .
+
+# Alternatively, to install exact package versions as tested:
+# uv sync
 ```
 
 ## 🚀 Inference with Merlin
