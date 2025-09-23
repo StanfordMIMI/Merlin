@@ -10,18 +10,25 @@ from merlin.models import i3res
 
 
 class ImageEncoder(nn.Module):
-    def __init__(self, ImageEmbedding: bool = False):
+    def __init__(self, ImageEmbedding: bool = False, PhenotypeCls: bool = False):
         super().__init__()
         self.ImageEmbedding = ImageEmbedding
+        self.PhenotypeCls = PhenotypeCls
         resnet = torchvision.models.resnet152(pretrained=True)
         self.i3_resnet = i3res.I3ResNet(
-            copy.deepcopy(resnet), class_nb=1692, conv_class=True, ImageEmbedding=self.ImageEmbedding
+            copy.deepcopy(resnet),
+            class_nb=1692,
+            conv_class=True,
+            ImageEmbedding=self.ImageEmbedding,
+            PhenotypeCls=self.PhenotypeCls,
         )
 
     def forward(self, image):
         if self.ImageEmbedding:
             contrastive_features = self.i3_resnet(image)
             return contrastive_features
+        elif self.PhenotypeCls:
+            return self.i3_resnet(image)
         else:
             contrastive_features, ehr_features = self.i3_resnet(image)
             return contrastive_features, ehr_features
@@ -51,10 +58,18 @@ class TextEncoder(nn.Module):
 
 
 class MerlinArchitecture(nn.Module):
-    def __init__(self, init_logit_scale: float = 1.0, ImageEmbedding: bool = False): 
+    def __init__(
+        self,
+        init_logit_scale: float = 1.0,
+        ImageEmbedding: bool = False,
+        PhenotypeCls: bool = False,
+    ):
         super().__init__()
         self.ImageEmbedding = ImageEmbedding
-        self.encode_image = ImageEncoder(ImageEmbedding=self.ImageEmbedding)
+        self.PhenotypeCls = PhenotypeCls
+        self.encode_image = ImageEncoder(
+            ImageEmbedding=self.ImageEmbedding, PhenotypeCls=self.PhenotypeCls
+        )
         self.encode_text = TextEncoder()
         self.logit_scale = nn.Parameter(torch.ones([]) * init_logit_scale)
 
@@ -62,11 +77,16 @@ class MerlinArchitecture(nn.Module):
         if self.ImageEmbedding and text is None:
             image_features = self.encode_image(image)
             return image_features
+        elif self.PhenotypeCls and text is None:
+            phenotype_features = self.encode_image(image)
+            return phenotype_features
         elif self.ImageEmbedding and text is not None:
             raise ValueError("Text input not required for image embedding")
+        elif self.PhenotypeCls and text is not None:
+            raise ValueError("Text input not required for phenotype classification")
         elif text is None:
             raise ValueError("Text input required for Image and Text embedding")
-        
+
         image_features, ehr_features = self.encode_image(image)
         text_features = self.encode_text(text)
 

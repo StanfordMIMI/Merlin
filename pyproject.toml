@@ -1,6 +1,6 @@
 [project]
 name = "merlin-vlm"
-version = "0.0.3"
+version = "0.0.4"
 requires-python = ">=3.9"
 description = "Merlin: A Vision Language Foundation Model for 3D Computed Tomography"
 readme = "README.md"
@@ -29,6 +29,8 @@ dependencies = [
     "torchvision>=0.16.2", # tested with 0.16.2
     "nibabel", # tested with 5.3.2
     "nltk", # tested with 3.9.1
+    "pandas", # tested with 2.3.2
+    "rich" # tested with 14.1.0
 ]
 
 [project.urls]

@@ -10,13 +10,13 @@
 
 To install Merlin, you can simply run:
 
-```python
+```bash
 pip install merlin-vlm
 ```
 
 For an editable installation, use the following commands to clone and install this repository.
 
-```python
+```bash
 conda create -name merlin
 conda activate merlin
 
@@ -46,9 +46,23 @@ from merlin import Merlin
 model = Merlin(ImageEmbedding=True)
 ```
 
+To initialize the model for **phenotype classification**, use:
+
+```python
+from merlin import Merlin
+
+model = Merlin(PhenotypeCls=True)
+```
+
 #### For inference on a demo CT scan, please check out the [demo](documentation/demo.py)
 
 #### For additional information, please read the [documentation](documentation/inference.md).
+
+## 📂  Merlin Abdominal CT Dataset
+
+We are excited to release the **Merlin Abdominal CT Dataset** to the community!
+
+For details on accessing and using the dataset, please see the [download documentation](documentation/download.md)!
 
 ## 📎 Citation
 

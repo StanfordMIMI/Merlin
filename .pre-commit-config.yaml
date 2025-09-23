@@ -17,3 +17,4 @@ repos:
     - id: mdformat
       additional_dependencies:
         - mdformat-ruff
+      exclude: documentation/download.md
