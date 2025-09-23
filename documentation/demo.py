@@ -10,6 +10,11 @@ from merlin.data import download_sample_data
 from merlin.data import DataLoader
 from merlin import Merlin
 
+import pandas as pd
+import numpy as np
+
+from rich.console import Console
+from rich.table import Table
 
 warnings.filterwarnings("ignore")
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -65,3 +70,41 @@ for batch in dataloader:
     print(
         f"Image embeddings shape (Can be used for downstream tasks): {outputs[0].shape}"
     )
+
+# Get the Phenotype Predictions
+model = Merlin(PhenotypeCls=True)
+model.eval()
+model.cuda()
+
+phenotypes = pd.read_csv(os.path.join(os.path.dirname(__file__), "phenotypes.csv"))
+
+for batch in dataloader:
+    outputs = model(
+        batch["image"].to(device),
+    )
+    # Getting the output probabilities for the EHR phecodes
+    outputs = outputs.squeeze(0).detach().cpu().numpy()
+
+    # Sorting the output probabilities to get the top 3 predicted phenotypes
+    top_indices = np.argsort(outputs)[::-1][:3]
+    top_probs = outputs[top_indices]
+    top_phenos = phenotypes.iloc[top_indices].values  # first col = phenotype names
+
+    # Printing the top 3 predicted phenotypes in a table
+    console = Console()
+
+    print("\nTop 3 predicted phenotypes:")
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column("Phencode", style="cyan", width=10)
+    table.add_column(
+        "Phecode Description", style="green", max_width=30, overflow="fold"
+    )
+    table.add_column("Probability", style="yellow")
+
+    # Printing the top 3 predicted phenotypes in a table
+    for pheno_row, prob in zip(top_phenos, top_probs):
+        code = pheno_row[0]
+        desc = pheno_row[1]
+        table.add_row(str(code), desc, f"{prob:.4f}")
+
+    console.print(table)

@@ -1,4 +1,4 @@
-""" Code adapted from https://github.com/hassony2/inflated_convnets_pytorch """
+"""Code adapted from https://github.com/hassony2/inflated_convnets_pytorch"""
 
 import math
 
@@ -10,7 +10,14 @@ from merlin.models import inflate
 
 class I3ResNet(torch.nn.Module):
     def __init__(
-        self, resnet2d, frame_nb=16, class_nb=1000, conv_class=False, return_skips=False, ImageEmbedding=False
+        self,
+        resnet2d,
+        frame_nb=16,
+        class_nb=1000,
+        conv_class=False,
+        return_skips=False,
+        ImageEmbedding=False,
+        PhenotypeCls=False,
     ):
         """
         Args:
@@ -21,6 +28,7 @@ class I3ResNet(torch.nn.Module):
         self.return_skips = return_skips
         self.conv_class = conv_class
         self.ImageEmbedding = ImageEmbedding
+        self.PhenotypeCls = PhenotypeCls
 
         self.conv1 = inflate.inflate_conv(
             resnet2d.conv1, time_dim=3, time_padding=1, center=True
@@ -79,13 +87,13 @@ class I3ResNet(torch.nn.Module):
         x = checkpoint.checkpoint(self.layer4, x)
         if self.return_skips:
             skips.append(x.permute(0, 1, 3, 4, 2))
-                    
+
         if self.conv_class:
             x_features = self.avgpool(x)
-            
+
             if self.ImageEmbedding:
                 return x_features.squeeze(2).squeeze(2).squeeze(2).unsqueeze(0)
-            
+
             x_ehr = self.classifier(x_features)
             x_ehr = x_ehr.squeeze(3)
             x_ehr = x_ehr.squeeze(3)
@@ -97,6 +105,10 @@ class I3ResNet(torch.nn.Module):
             if self.return_skips:
                 return x_contrastive, x_ehr, skips
             else:
+                if self.PhenotypeCls:
+                    probs = torch.sigmoid(x_ehr)
+                    return probs
+
                 return x_contrastive, x_ehr
         else:
             x = self.avgpool(x)
@@ -158,7 +170,7 @@ class Bottleneck3d(torch.nn.Module):
             out = self.conv3(out)
             out = self.bn3(out)
             return out
-        
+
         residual = x
 
         if self.downsample is not None:
