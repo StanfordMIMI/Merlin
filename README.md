@@ -17,11 +17,11 @@ pip install merlin-vlm
 For an editable installation, use the following commands to clone and install this repository.
 
 ```bash
-conda create -name merlin
+conda create --name merlin python==3.10
 conda activate merlin
 
 git clone https://github.com/StanfordMIMI/Merlin.git
-cd merlin
+cd Merlin
 pip install -e .
 
 # Alternatively, to install exact package versions as tested:

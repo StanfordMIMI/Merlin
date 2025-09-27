@@ -77,6 +77,7 @@ class TextDecoder(nn.Module):
             "StanfordAIMI/RadLLaMA-7b",
             use_fast=True,
             trust_remote_code=True,
+            cache_dir="./checkpoints",
         )
         self.text_decoder = AutoModelForCausalLM.from_pretrained(
             "StanfordAIMI/RadLLaMA-7b",

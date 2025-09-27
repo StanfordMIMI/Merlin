@@ -51,8 +51,10 @@ For a complete working example, please refer to the `report_generation_demo.py` 
 To run the demo, use the `accelerate launch` command. The `--mixed_precision fp16` flag is recommended to enable mixed precision for improved performance and reduced memory usage:
 
 ```bash
-accelerate launch --mixed_precision fp16 report_generation_demo.py
+CUDA_VISIBLE_DEVICES=<...> accelerate launch --mixed_precision fp16 report_generation_demo.py
 ```
+
+Note: We tested the inference engine on one 48Gb A6000 GPU.
 
 ______________________________________________________________________
 
