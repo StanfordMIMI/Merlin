@@ -54,9 +54,17 @@ from merlin import Merlin
 model = Merlin(PhenotypeCls=True)
 ```
 
-#### For inference on a demo CT scan, please check out the [demo](documentation/demo.py)
+To initialize the model for **radiology report generation**, use:
 
-#### For additional information, please read the [documentation](documentation/inference.md).
+```python
+from merlin import Merlin
+
+model = Merlin(RadiologyReport=True)
+```
+
+#### For inference on a demo CT scan, please check out the [general demo](documentation/demo.py) and [report generation demo](documentation/radiology_report_generation.py).
+
+#### For additional information, please read the [inference documentation](documentation/inference.md) and [report generation documentation](documentation/report_generation.md).
 
 ## 📂  Merlin Abdominal CT Dataset
 
