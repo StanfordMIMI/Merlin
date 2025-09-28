@@ -40,7 +40,7 @@ ______________________________________________________________________
 
 > ⚠️ **Important: Disk Space Required**
 >
-> The model weights are approximately **25 GB**. During the first run, these weights will be downloaded to a cache directory located at `merlin/models/checkpoints`. Please ensure you have sufficient disk space available before initializing the model.
+> The model weights are approximately **25 GB**. During the first run, these weights will be downloaded to a cache directory located at `merlin/models/checkpoints`. If you run the `report_generation_demo.py` file then the model weights will be stored in `documentation/checkpoints`. Please ensure you have sufficient disk space available before initializing the model.
 
 ______________________________________________________________________
 
