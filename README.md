@@ -54,6 +54,14 @@ from merlin import Merlin
 model = Merlin(PhenotypeCls=True)
 ```
 
+To initialize the model for **five-year disease prediction**, use:
+
+```python
+from merlin import Merlin
+
+model = Merlin(FiveYearPred=True)
+```
+
 To initialize the model for **radiology report generation**, use:
 
 ```python

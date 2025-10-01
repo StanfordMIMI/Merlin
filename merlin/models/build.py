@@ -10,17 +10,24 @@ from merlin.models import i3res
 
 
 class ImageEncoder(nn.Module):
-    def __init__(self, ImageEmbedding: bool = False, PhenotypeCls: bool = False):
+    def __init__(
+        self,
+        ImageEmbedding: bool = False,
+        PhenotypeCls: bool = False,
+        FiveYearPred: bool = False,
+    ):
         super().__init__()
         self.ImageEmbedding = ImageEmbedding
         self.PhenotypeCls = PhenotypeCls
+        self.FiveYearPred = FiveYearPred
         resnet = torchvision.models.resnet152(pretrained=True)
         self.i3_resnet = i3res.I3ResNet(
             copy.deepcopy(resnet),
-            class_nb=1692,
+            class_nb=1692 if not self.FiveYearPred else 6,
             conv_class=True,
             ImageEmbedding=self.ImageEmbedding,
             PhenotypeCls=self.PhenotypeCls,
+            FiveYearPred=self.FiveYearPred,
         )
 
     def forward(self, image):
@@ -28,6 +35,8 @@ class ImageEncoder(nn.Module):
             contrastive_features = self.i3_resnet(image)
             return contrastive_features
         elif self.PhenotypeCls:
+            return self.i3_resnet(image)
+        elif self.FiveYearPred:
             return self.i3_resnet(image)
         else:
             contrastive_features, ehr_features = self.i3_resnet(image)
@@ -63,12 +72,16 @@ class MerlinArchitecture(nn.Module):
         init_logit_scale: float = 1.0,
         ImageEmbedding: bool = False,
         PhenotypeCls: bool = False,
+        FiveYearPred: bool = False,
     ):
         super().__init__()
         self.ImageEmbedding = ImageEmbedding
         self.PhenotypeCls = PhenotypeCls
+        self.FiveYearPred = FiveYearPred
         self.encode_image = ImageEncoder(
-            ImageEmbedding=self.ImageEmbedding, PhenotypeCls=self.PhenotypeCls
+            ImageEmbedding=self.ImageEmbedding,
+            PhenotypeCls=self.PhenotypeCls,
+            FiveYearPred=self.FiveYearPred,
         )
         self.encode_text = TextEncoder()
         self.logit_scale = nn.Parameter(torch.ones([]) * init_logit_scale)
@@ -80,10 +93,15 @@ class MerlinArchitecture(nn.Module):
         elif self.PhenotypeCls and text is None:
             phenotype_features = self.encode_image(image)
             return phenotype_features
+        elif self.FiveYearPred and text is None:
+            five_year_features = self.encode_image(image)
+            return five_year_features
         elif self.ImageEmbedding and text is not None:
             raise ValueError("Text input not required for image embedding")
         elif self.PhenotypeCls and text is not None:
             raise ValueError("Text input not required for phenotype classification")
+        elif self.FiveYearPred and text is not None:
+            raise ValueError("Text input not required for five year disease prediction")
         elif text is None:
             raise ValueError("Text input required for Image and Text embedding")
 

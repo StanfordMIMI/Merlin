@@ -72,6 +72,21 @@ The `phenotypes.csv` file is structured with two columns:
 
 - `phecode_str`: The string description of the phenotype.
 
+______________________________________________________________________
+
+### Five-year Disease Prediction
+
+To initialize the model for Five-Year Disease Prediction, set the `FiveYearPred` parameter to `True` upon instantiation.
+
+```python
+from merlin import Merlin
+
+# Initialize the model for the Five-Year Disease Prediction task
+model = Merlin(FiveYearPred=True)
+```
+
+The model outputs a vector of size 6, where each element corresponds to the probability of a specific future disease. For the corresponding labels, use the `five_years_disease_task.csv` file from the [Merlin dataset](download.md).
+
 ## 👨‍💻 Merlin Finetuning
 
 Since both Merlin’s model architecture and pretrained weights are provided, Merlin allows for straightforward finetuning in PyTorch VLM and vision-only pipelines. Additionally, Merlin was trained on a single NVIDIA A6000 GPU (with a Vision-Language batch size of 18), meaning finetuning can be performed even in compute-constrained environments.

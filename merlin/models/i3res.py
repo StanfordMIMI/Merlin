@@ -18,6 +18,7 @@ class I3ResNet(torch.nn.Module):
         return_skips=False,
         ImageEmbedding=False,
         PhenotypeCls=False,
+        FiveYearPred=False,
     ):
         """
         Args:
@@ -29,7 +30,7 @@ class I3ResNet(torch.nn.Module):
         self.conv_class = conv_class
         self.ImageEmbedding = ImageEmbedding
         self.PhenotypeCls = PhenotypeCls
-
+        self.FiveYearPred = FiveYearPred
         self.conv1 = inflate.inflate_conv(
             resnet2d.conv1, time_dim=3, time_padding=1, center=True
         )
@@ -105,7 +106,7 @@ class I3ResNet(torch.nn.Module):
             if self.return_skips:
                 return x_contrastive, x_ehr, skips
             else:
-                if self.PhenotypeCls:
+                if self.PhenotypeCls or self.FiveYearPred:
                     probs = torch.sigmoid(x_ehr)
                     return probs
 

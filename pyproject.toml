@@ -1,6 +1,6 @@
 [project]
 name = "merlin-vlm"
-version = "0.0.5"
+version = "0.0.6"
 requires-python = ">=3.9"
 description = "Merlin: A Vision Language Foundation Model for 3D Computed Tomography"
 readme = "README.md"

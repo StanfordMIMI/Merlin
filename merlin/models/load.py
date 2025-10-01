@@ -18,6 +18,10 @@ MODEL_CONFIGS: Dict[str, Dict[str, Any]] = {
         "builder": Clip3DForTextGeneration,
         "checkpoint": "resnet_gpt2_best_stanford_report_generation_average.pt",
     },
+    "five_year_disease_prediction": {
+        "builder": MerlinArchitecture,
+        "checkpoint": "resnet_clinical_longformer_five_year_disease_prediction.pt",
+    },
 }
 
 
@@ -27,21 +31,31 @@ class Merlin(nn.Module):
         ImageEmbedding: bool = False,
         PhenotypeCls: bool = False,
         RadiologyReport: bool = False,
+        FiveYearPred: bool = False,
     ):
         super(Merlin, self).__init__()
 
         # If both are True, raise an error
-        if ImageEmbedding and PhenotypeCls:
+        if sum([ImageEmbedding, PhenotypeCls, FiveYearPred]) > 1:
             raise ValueError(
-                "Both ImageEmbedding and PhenotypeCls cannot be True at the same time."
+                "ImageEmbedding and PhenotypeCls and FiveYearPred cannot be True at the same time."
             )
 
-        self.task = "report_generation" if RadiologyReport else "default"
+        self.task = (
+            "report_generation"
+            if RadiologyReport
+            else ("five_year_disease_prediction" if FiveYearPred else "default")
+        )
+
         self._config = MODEL_CONFIGS[self.task]
 
         # Pass through the flags needed by the underlying model builders
         model_kwargs = (
-            {"ImageEmbedding": ImageEmbedding, "PhenotypeCls": PhenotypeCls}
+            {
+                "ImageEmbedding": ImageEmbedding,
+                "PhenotypeCls": PhenotypeCls,
+                "FiveYearPred": FiveYearPred,
+            }
             if not RadiologyReport
             else {}
         )
@@ -66,7 +80,11 @@ class Merlin(nn.Module):
 
         print(f"Loading checkpoint for '{self.task}' task from {checkpoint_path}")
         state_dict = torch.load(checkpoint_path, map_location="cpu")
-        model.load_state_dict(state_dict)
+
+        if self.task == "five_year_disease_prediction":
+            model.encode_image.i3_resnet.load_state_dict(state_dict, strict=True)
+        else:
+            model.load_state_dict(state_dict)
 
         return model
 
