@@ -108,3 +108,35 @@ for batch in dataloader:
         table.add_row(str(code), desc, f"{prob:.4f}")
 
     console.print(table)
+
+
+# Get the Five Year Disease Prediction
+model = Merlin(FiveYearPred=True)
+model.eval()
+model.cuda()
+
+disease_names = [
+    "Cardiovascular Disease (CVD)",
+    "Ischemic Heart Disease (IHD)",
+    "Hypertension (HTN)",
+    "Diabetes Mellitus (DM)",
+    "Chronic Kidney Disease (CKD)",
+    "Chronic Liver Disease (CLD)",
+]
+for batch in dataloader:
+    outputs = model(
+        batch["image"].to(device),
+    ).squeeze(0)
+
+    console = Console()
+
+    console.print("\nFive year disease prediction probabilities:", style="bold magenta")
+
+    table = Table(show_header=True, header_style="bold blue")
+    table.add_column("Disease", style="cyan", width=25)
+    table.add_column("Probability", style="yellow", justify="right")
+
+    for disease, prob in zip(disease_names, outputs):
+        table.add_row(disease, f"{prob:.4f}")
+
+    console.print(table)
