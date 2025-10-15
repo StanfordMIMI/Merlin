@@ -51,7 +51,7 @@ The downloaded directory, `merlinabdominalctdataset/`, contains the following fi
         * **`0`** (Negative): The disease or finding was explicitly negated.
         * **`-1`** (Missing): The disease or finding was not mentioned.
 - **`five_years_disease_task.csv`**  
-CSV file containing **multi-disease 5-year prediction labels** for the **test set**.
+CSV file containing **multi-disease 5-year prediction labels**. The column `merlin_split` indicates the subset of the test set used for the five-year disease prediction task. Only some test set samples are included, and this column reflects how those samples were further divided to create the splits for this specific task, as described in the Merlin paper.
 
 ## ⚠️ Notes
 
