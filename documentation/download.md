@@ -53,6 +53,11 @@ The downloaded directory, `merlinabdominalctdataset/`, contains the following fi
 - **`five_years_disease_task.csv`**  
 CSV file containing **multi-disease 5-year prediction labels**. The column `merlin_split` indicates the subset of the test set used for the five-year disease prediction task. Only some test set samples are included, and this column reflects how those samples were further divided to create the splits for this specific task, as described in the Merlin paper.
 
+- **`metadata.csv`**  
+CSV file containing metadata for the Merlin dataset, including:
+  - **Demographics**: Age, Gender, Race
+  - **Acquisition parameters**: CT phase (phase), scanner manufacturer and model (manufacturer, manufacturermodelname), tube voltage (kvp), slice thickness (slicethickness), and tube current (ma; xraytubecurrent)
+
 ## ⚠️ Notes
 
 - Please ensure compliance with Stanford’s **data use agreements** when accessing and working with the dataset.  
