@@ -87,7 +87,7 @@ For details on accessing and using the dataset, please see the [download documen
 If you find this repository useful for your work, please cite the cite the [Nature paper](https://www.nature.com/articles/s41586-026-10181-8):
 
 ```bibtex
-@article{blankemeier2026merlin,
+@article{blankemeier_kumar2026merlin,
   author = {Blankemeier, Louis and Kumar, Ashwin and Cohen, Joseph Paul and Liu, Jiaming and Liu, Longchao and Van Veen, Dave and Gardezi, Syed Jamal Safdar and Yu, Hongkun and Paschali, Magdalini and Chen, Zhihong and Delbrouck, Jean-Benoit and Reis, Eduardo and Holland, Robbie and Truyts, Cesar and Bluethgen, Christian and Wu, Yufu and Lian, Long and Jensen, Malte Engmann Kjeldskov and Ostmeier, Sophie and Varma, Maya and Valanarasu, Jeya Maria Jose and Fang, Zhongnan and Huo, Zepeng and Nabulsi, Zaid and Ardila, Diego and Weng, Wei-Hung and Amaro Junior, Edson and Ahuja, Neera and Fries, Jason and Shah, Nigam H. and Zaharchuk, Greg and Willis, Marc and Yala, Adam and Johnston, Andrew and Boutin, Robert D. and Wentland, Andrew and Langlotz, Curtis P. and Hom, Jason and Gatidis, Sergios and Chaudhari, Akshay S.},
   title   = {Merlin: a computed tomography vision-language foundation model and dataset},
   journal = {Nature},
