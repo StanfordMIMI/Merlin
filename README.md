@@ -1,8 +1,8 @@
-# Merlin: Vision Language Foundation Model for 3D Computed Tomography
+# Merlin: A Computed Tomography Vision–Language Foundation Model and Dataset
 
-[![arXiv](https://img.shields.io/badge/arXiv-2406.06512-b31b1b.svg?style=for-the-badge)](https://arxiv.org/abs/2406.06512)    [![Hugging Face](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-md.svg)](https://huggingface.co/stanfordmimi/Merlin)    [![pypi](https://img.shields.io/pypi/v/merlin-vlm?style=for-the-badge)](https://pypi.org/project/merlin-vlm/)    [![Merlin Dataset](https://img.shields.io/badge/Merlin%20Dataset-blue?style=for-the-badge)](https://stanfordaimi.azurewebsites.net/datasets/60b9c7ff-877b-48ce-96c3-0194c8205c40)    [![Watch the Talk on YouTube](https://img.shields.io/badge/YouTube-Talk-red?style=for-the-badge&logo=youtube)](https://youtu.be/XWmCkbpXOUw?si=6GggZgj9U4kbLAKx)
+[![Nature Paper](https://img.shields.io/badge/Nature-Paper-blue?style=for-the-badge)](https://doi.org/10.1038/s41586-026-10181-8)    [![arXiv](https://img.shields.io/badge/arXiv-2406.06512-b31b1b.svg?style=for-the-badge)](https://arxiv.org/abs/2406.06512)    [![Hugging Face](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-md.svg)](https://huggingface.co/stanfordmimi/Merlin)    [![pypi](https://img.shields.io/pypi/v/merlin-vlm?style=for-the-badge)](https://pypi.org/project/merlin-vlm/)    [![Merlin Dataset](https://img.shields.io/badge/Merlin%20Dataset-darkgreen?style=for-the-badge)](https://stanfordaimi.azurewebsites.net/datasets/60b9c7ff-877b-48ce-96c3-0194c8205c40)    [![Watch the Talk on YouTube](https://img.shields.io/badge/YouTube-Talk-red?style=for-the-badge&logo=youtube)](https://youtu.be/XWmCkbpXOUw?si=6GggZgj9U4kbLAKx)
 
-*Merlin is a 3D VLM for computed tomography that leverages both structured electronic health records (EHR) and unstructured radiology reports for pretraining.*
+*Merlin is a 3D VLM for computed tomography that leverages both structured electronic health records (EHR) and unstructured radiology reports for pretraining. ([Nature 2026](https://www.nature.com/articles/s41586-026-10181-8))*
 
 ![Key Graphic](documentation/assets/overview.png)
 
@@ -84,14 +84,16 @@ For details on accessing and using the dataset, please see the [download documen
 
 ## 📎 Citation
 
-If you find this repository useful for your work, please cite the cite the [original paper](https://arxiv.org/abs/2406.06512):
+If you find this repository useful for your work, please cite the cite the [original paper](https://www.nature.com/articles/s41586-026-10181-8):
 
 ```bibtex
-@article{blankemeier2024merlin,
-  title={Merlin: A vision language foundation model for 3d computed tomography},
-  author={Blankemeier, Louis and Cohen, Joseph Paul and Kumar, Ashwin and Van Veen, Dave and Gardezi, Syed Jamal Safdar and Paschali, Magdalini and Chen, Zhihong and Delbrouck, Jean-Benoit and Reis, Eduardo and Truyts, Cesar and others},
-  journal={Research Square},
-  pages={rs--3},
-  year={2024}
+@article{blankemeier2026merlin,
+  author = {Blankemeier, Louis and Kumar, Ashwin and Cohen, Joseph Paul and Liu, Jiaming and Liu, Longchao and Van Veen, Dave and Gardezi, Syed Jamal Safdar and Yu, Hongkun and Paschali, Magdalini and Chen, Zhihong and Delbrouck, Jean-Benoit and Reis, Eduardo and Holland, Robbie and Truyts, Cesar and Bluethgen, Christian and Wu, Yufu and Lian, Long and Jensen, Malte Engmann Kjeldskov and Ostmeier, Sophie and Varma, Maya and Valanarasu, Jeya Maria Jose and Fang, Zhongnan and Huo, Zepeng and Nabulsi, Zaid and Ardila, Diego and Weng, Wei-Hung and Amaro Junior, Edson and Ahuja, Neera and Fries, Jason and Shah, Nigam H. and Zaharchuk, Greg and Willis, Marc and Yala, Adam and Johnston, Andrew and Boutin, Robert D. and Wentland, Andrew and Langlotz, Curtis P. and Hom, Jason and Gatidis, Sergios and Chaudhari, Akshay S.},
+  title   = {Merlin: a computed tomography vision-language foundation model and dataset},
+  journal = {Nature},
+  year    = {2026},
+  doi     = {10.1038/s41586-026-10181-8},
+  url     = {https://doi.org/10.1038/s41586-026-10181-8}
+}
 }
 ```
