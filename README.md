@@ -84,7 +84,7 @@ For details on accessing and using the dataset, please see the [download documen
 
 ## 📎 Citation
 
-If you find this repository useful for your work, please cite the cite the [original paper](https://www.nature.com/articles/s41586-026-10181-8):
+If you find this repository useful for your work, please cite the cite the [Nature paper](https://www.nature.com/articles/s41586-026-10181-8):
 
 ```bibtex
 @article{blankemeier2026merlin,
