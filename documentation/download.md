@@ -69,10 +69,12 @@ CSV file containing metadata for the Merlin dataset, including:
 If you use the Merlin Dataset in your research, please cite:
 
 ```bibtex
-@article{blankemeier2024merlin,
-  title={Merlin: A vision language foundation model for 3d computed tomography},
-  author={Blankemeier, Louis and Cohen, Joseph Paul and Kumar, Ashwin and Van Veen, Dave and Gardezi, Syed Jamal Safdar and Paschali, Magdalini and Chen, Zhihong and Delbrouck, Jean-Benoit and Reis, Eduardo and Truyts, Cesar and others},
-  journal={Research Square},
-  pages={rs--3},
-  year={2024}
+@article{blankemeier_kumar2026merlin,
+  author = {Blankemeier, Louis and Kumar, Ashwin and Cohen, Joseph Paul and Liu, Jiaming and Liu, Longchao and Van Veen, Dave and Gardezi, Syed Jamal Safdar and Yu, Hongkun and Paschali, Magdalini and Chen, Zhihong and Delbrouck, Jean-Benoit and Reis, Eduardo and Holland, Robbie and Truyts, Cesar and Bluethgen, Christian and Wu, Yufu and Lian, Long and Jensen, Malte Engmann Kjeldskov and Ostmeier, Sophie and Varma, Maya and Valanarasu, Jeya Maria Jose and Fang, Zhongnan and Huo, Zepeng and Nabulsi, Zaid and Ardila, Diego and Weng, Wei-Hung and Amaro Junior, Edson and Ahuja, Neera and Fries, Jason and Shah, Nigam H. and Zaharchuk, Greg and Willis, Marc and Yala, Adam and Johnston, Andrew and Boutin, Robert D. and Wentland, Andrew and Langlotz, Curtis P. and Hom, Jason and Gatidis, Sergios and Chaudhari, Akshay S.},
+  title   = {Merlin: a computed tomography vision-language foundation model and dataset},
+  journal = {Nature},
+  year    = {2026},
+  doi     = {10.1038/s41586-026-10181-8},
+  url     = {https://doi.org/10.1038/s41586-026-10181-8}
 }
+```
