@@ -70,7 +70,7 @@ from merlin import Merlin
 model = Merlin(RadiologyReport=True)
 ```
 
-#### For inference on a demo CT scan, please check out the [general demo](documentation/demo.py) and [report generation demo](documentation/radiology_report_generation.py).
+#### For inference on a demo CT scan, please check out the [general demo](documentation/demo.py) and [report generation demo](documentation/report_generation_demo.py).
 
 #### For additional information, please read the [inference documentation](documentation/inference.md) and [report generation documentation](documentation/report_generation.md).
 
