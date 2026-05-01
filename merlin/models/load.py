@@ -16,6 +16,10 @@ MODEL_CONFIGS: Dict[str, Dict[str, Any]] = {
     },
     "report_generation": {
         "builder": Clip3DForTextGeneration,
+        "checkpoint": "resnet_gpt2_best_stanford_report_generation_average_mtl.pt",
+    },
+    "report_generation_stage1_stage2": {
+        "builder": Clip3DForTextGeneration,
         "checkpoint": "resnet_gpt2_best_stanford_report_generation_average.pt",
     },
     "five_year_disease_prediction": {
@@ -31,6 +35,7 @@ class Merlin(nn.Module):
         ImageEmbedding: bool = False,
         PhenotypeCls: bool = False,
         RadiologyReport: bool = False,
+        RadiologyReportStage1_Stage2: bool = False,
         FiveYearPred: bool = False,
     ):
         super(Merlin, self).__init__()
@@ -41,11 +46,19 @@ class Merlin(nn.Module):
                 "ImageEmbedding and PhenotypeCls and FiveYearPred cannot be True at the same time."
             )
 
-        self.task = (
-            "report_generation"
-            if RadiologyReport
-            else ("five_year_disease_prediction" if FiveYearPred else "default")
-        )
+        if sum([RadiologyReport, RadiologyReportStage1_Stage2]) > 1:
+            raise ValueError(
+                "RadiologyReport and RadiologyReportStage1_Stage2 cannot be True at the same time."
+            )
+
+        if RadiologyReport:
+            self.task = "report_generation"
+        elif RadiologyReportStage1_Stage2:
+            self.task = "report_generation_stage1_stage2"
+        elif FiveYearPred:
+            self.task = "five_year_disease_prediction"
+        else:
+            self.task = "default"
 
         self._config = MODEL_CONFIGS[self.task]
 
@@ -56,7 +69,7 @@ class Merlin(nn.Module):
                 "PhenotypeCls": PhenotypeCls,
                 "FiveYearPred": FiveYearPred,
             }
-            if not RadiologyReport
+            if not RadiologyReport and not RadiologyReportStage1_Stage2
             else {}
         )
         self.model = self._load_model(**model_kwargs)
@@ -102,9 +115,12 @@ class Merlin(nn.Module):
         Generates text if the model is in RadiologyReport mode.
         Passes all arguments to the underlying model's generate method.
         """
-        if self.task != "report_generation":
+        if (
+            self.task != "report_generation"
+            and self.task != "report_generation_stage1_stage2"
+        ):
             raise AttributeError(
-                "The 'generate' method is only available when RadiologyReport=True."
+                "The 'generate' method is only available when RadiologyReport=True or RadiologyReportStage1_Stage2=True."
             )
         # Delegate the call to the actual text generation model
         return self.model.generate(*args, **kwargs)

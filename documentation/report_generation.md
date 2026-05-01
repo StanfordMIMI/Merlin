@@ -14,6 +14,14 @@ from merlin import Merlin
 model = Merlin(RadiologyReport=True)
 ```
 
+**Update (5/1/2026)**: We have updated the radiology report model to use Merlin's MTL image encoder. If you would like to access the previous version of the report generation module, set the `RadiologyReportStage1_Stage2` flag to `True`:
+
+```python
+from merlin import Merlin
+
+model = Merlin(RadiologyReportStage1_Stage2=True)
+```
+
 ______________________________________________________________________
 
 ## Capabilities

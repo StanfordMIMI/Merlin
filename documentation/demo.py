@@ -121,8 +121,9 @@ disease_names = [
     "Hypertension (HTN)",
     "Diabetes Mellitus (DM)",
     "Chronic Kidney Disease (CKD)",
-    "Chronic Liver Disease (CLD)",
+    "Osteoporosis (OST)",
 ]
+
 for batch in dataloader:
     outputs = model(
         batch["image"].to(device),
