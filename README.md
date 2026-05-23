@@ -76,6 +76,8 @@ model = Merlin(RadiologyReport=True)
 
 #### For segmentation, we integrated Merlin with nnU-Net framework. Please refer to the [Merlin segmentation repository](https://github.com/ashwinkumargb/Merlin-nnUNet) and its README for detailed setup and inference instructions.
 
+#### For a code-first walkthrough of the Merlin codebase, please check out this [blog](https://urldefense.com/v3/__https://passthetorch.dev/posts/deep-dive-into-merlin/__;!!G92We9drHetJ8EofZw!Z0a3-_4uuVWoAUwvJWSw5kj19m15l0bkqc64EveKRMXUceD7ezETrpV2weXxJe6wgUyoYxLFRY3u75ykWYnClE9L$).
+
 ## 📂  Merlin Abdominal CT Dataset
 
 We are excited to release the **Merlin Abdominal CT Dataset** to the community!
