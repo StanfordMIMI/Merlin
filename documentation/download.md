@@ -86,6 +86,28 @@ features = emb.as_tensor().flatten()  # (2048,)
 
 Loading requires `monai` to be installed, and `weights_only=False`, because the tensors carry MONAI metadata alongside the features.
 
+## 🫁 TotalSegmentator Segmentations
+
+TotalSegmentator segmentations for the scans in this dataset, so you can run anatomy-aware experiments without running the segmentation model yourself.
+
+**Download:** [`merlin-segmentations.zip`](https://huggingface.co/stanfordmimi/Merlin/resolve/main/merlin-segmentations.zip) (11.7 GB)
+
+- One segmentation per exam for 23,496 of the scans, named by accession ID, e.g. `AC4244d88.nii.gz`, matching the identifiers in `merlin_data/`.
+- Each file is a single multi-label NIfTI (`.nii.gz`) holding every structure for that scan, with voxel values `0` for background and `1`–`117` for anatomical structures.
+
+```python
+import json
+
+import nibabel as nib
+import numpy as np
+
+labels = json.load(open("merlin-segmentations/labels.json"))
+seg = nib.load("merlin-segmentations/AC4244d88.nii.gz")
+liver = np.asarray(seg.dataobj) == 5  # labels["5"] == "liver"
+```
+
+The archive also contains `labels.json`, which maps each integer to its structure name.
+
 ## ⚠️ Notes
 
 - Please ensure compliance with Stanford’s **data use agreements** when accessing and working with the dataset.
