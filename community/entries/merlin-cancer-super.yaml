@@ -1,0 +1,170 @@
+# Copy this file to entries/<your-project-name>.yaml and fill it in.
+# Validate locally with:  python community/validate.py --write --check-links
+# Field reference: community/CONTRIBUTING.md
+
+# Required. Display name of your project, as you want it listed.
+name: Merlin-Super
+
+# Required. One or two sentences, 300 characters max. Plain text, single line.
+description: >
+  R-Super (Report Supervision, MICCAI 2025 Best Paper runner-up) learns tumor segmentation from radiology reports. Merlin-Super is R-Super trained on Merlin Plus, surpassing public AI models for tumors in 9 organs: bladder, gallbladder, spleen, esophagus, stomach, duodenum, prostate, uterus, adrenal.
+
+# Required. One of: model, dataset, tool, benchmark, tutorial, other
+category: model
+
+# Required. Everyone you want credited. 'affiliation' and 'email' are optional.
+authors:
+  - name: "Pedro R. A. S. Bassi"
+    affiliation: "Johns Hopkins University, Baltimore, MD, USA; Harvard Medical School, Boston, MA, USA; Massachusetts General Hospital, Boston, MA, USA"
+  - name: "Xinze Zhou"
+    affiliation: "Johns Hopkins University, Baltimore, MD, USA"
+  - name: "Wenxuan Li"
+    affiliation: "Johns Hopkins University, Baltimore, MD, USA; Harvard Medical School, Boston, MA, USA; Massachusetts General Hospital, Boston, MA, USA"
+  - name: "Szymon Płotka"
+    affiliation: "Jagiellonian University, Kraków, Poland"
+  - name: "Jakob Wasserthal"
+    affiliation: "University Hospital Basel, Basel, Switzerland"
+  - name: "Jieneng Chen"
+    affiliation: "Johns Hopkins University, Baltimore, MD, USA"
+  - name: "Ibrahim E. Hamamci"
+    affiliation: "University of Zurich, Zurich, Switzerland; ETH AI Center, Zurich, Switzerland"
+  - name: "Sezgin Er"
+    affiliation: "University of Zurich, Zurich, Switzerland; Istanbul Medipol University, Istanbul, Turkey"
+  - name: "Jakub Prządo"
+    affiliation: "Warmian-Masurian Cancer Center, Olsztyn, Poland"
+  - name: "Zheren Zhu"
+    affiliation: "University of California, Berkeley, CA, USA; University of California, San Francisco, CA, USA"
+  - name: "Gorkem Durak"
+    affiliation: "Northwestern University, Illinois, USA"
+  - name: "Wiktoria Romańczyk"
+    affiliation: "Medical University of Białystok, Poland"
+  - name: "Yavuz B. Taktak"
+    affiliation: "Istanbul University, Istanbul, Turkey"
+  - name: "Melih Akan"
+    affiliation: "Istanbul Medipol University, Istanbul, Turkey"
+  - name: "Gülhan E. Akan"
+    affiliation: "Istanbul Medipol University, Istanbul, Turkey"
+  - name: "Yuhan Wang"
+    affiliation: "University of California, Santa Cruz, CA, USA"
+  - name: "Scott Ye"
+    affiliation: "University of California, San Francisco, CA, USA"
+  - name: "Qi Chen"
+    affiliation: "Johns Hopkins University, Baltimore, MD, USA"
+  - name: "Ashwin Kumar"
+    affiliation: "Stanford University, Stanford, CA, USA"
+  - name: "Lizhou Wu"
+    affiliation: "Shandong Provincial Qianfoshan Hospital, Shandong, China"
+  - name: "Guang Zhang"
+    affiliation: "Shandong Provincial Qianfoshan Hospital, Shandong, China"
+  - name: "Bjoern Menze"
+    affiliation: "University of Zurich, Zurich, Switzerland"
+  - name: "Jarosław B. Ćwikła"
+    affiliation: "University of Warmia and Mazury, Olsztyn, Poland"
+  - name: "Yuyin Zhou"
+    affiliation: "University of California, Santa Cruz, CA, USA; Google, San Francisco, CA, USA"
+  - name: "Frank H. Miller"
+    affiliation: "Northwestern University, Illinois, USA"
+  - name: "Yunhe Gao"
+    affiliation: "Stanford University, Stanford, CA, USA"
+  - name: "Akshay S. Chaudhari"
+    affiliation: "Stanford University, Stanford, CA, USA"
+  - name: "Curtis P. Langlotz"
+    affiliation: "Stanford University, Stanford, CA, USA"
+  - name: "Ulas Bagci"
+    affiliation: "Northwestern University, Illinois, USA"
+  - name: "Sergio Decherchi"
+    affiliation: "Istituto Italiano di Tecnologia, Genoa, Italy"
+  - name: "Andrea Cavalli"
+    affiliation: "Istituto Italiano di Tecnologia, Genoa, Italy; University of Bologna, Bologna, Italy; École Polytechnique Fédérale de Lausanne, Lausanne, Switzerland"
+  - name: "Arkadiusz Sitek"
+    affiliation: "Harvard Medical School, Boston, MA, USA; Massachusetts General Hospital, Boston, MA, USA"
+  - name: "Kang Wang"
+    affiliation: "University of California, San Francisco, CA, USA"
+  - name: "Yang Yang"
+    affiliation: "University of California, San Francisco, CA, USA"
+  - name: "Alan L. Yuille"
+    affiliation: "Johns Hopkins University, Baltimore, MD, USA"
+  - name: "Zongwei Zhou"
+    affiliation: "Johns Hopkins University, Baltimore, MD, USA; Johns Hopkins Medicine, Baltimore, MD, USA"
+
+# Required. The license your artifact is released under, e.g. MIT, Apache-2.0,
+# CC BY 4.0, CC BY-NC 4.0, or a Stanford AIMI data use agreement.
+license: CC BY-NC-ND 4.0
+
+# Required. 'homepage' is required; the rest are optional. All must be http(s)
+# URLs that work without a login. Merlin does not host artifacts — these point
+# to wherever you host yours.
+links:
+  homepage: https://huggingface.co/AbdomenAtlas/Merlin-Cancer-Super
+  code: https://github.com/MrGiovanni/R-Super
+  data: https://huggingface.co/datasets/AbdomenAtlas/MerlinPlus
+  paper: https://www.researchsquare.com/article/rs-10131590/v1
+  demo: https://huggingface.co/AbdomenAtlas/Merlin-Cancer-Super
+  docs: https://huggingface.co/AbdomenAtlas/Merlin-Cancer-Super
+
+# Required. ISO date (YYYY-MM-DD) you are adding this entry.
+added: 2026-09-23
+
+# Optional. Which parts of Merlin your work builds on.
+merlin_components:
+  - Merlin Abdominal CT Dataset
+
+# Optional. Free-form keywords.
+tags:
+  - segmentation
+  - abdominal-ct
+  - cancer detection
+  - cancer segmentation
+  - tumor
+
+# Optional. How people should cite your work, as BibTeX.
+citation: |
+  @misc{bassi2026largescalemulticancer,
+  title = {Large-Scale Multi-Cancer Detection by Learning Segmentation from Reports},
+  author = {Pedro R A S Bassi and
+            Xinze Zhou and
+            Wenxuan Li and
+            Szymon Płotka and
+            Jakob Wasserthal and
+            Jieneng Chen and
+            Ibrahim E Hamamci and
+            Sezgin Er and
+            Jakub Prządo and
+            Zheren Zhu and
+            Gorkem Durak and
+            Wiktoria Romańczyk and
+            Yavuz B Taktak and
+            Melih Akan and
+            Yuhan Wang and
+            Scott Ye and
+            Qi Chen and
+            Ashwin Kumar and
+            Lizhou Wu and
+            Guang Zhang and
+            Bjoern Menze and
+            Jarosław B Ćwikła and
+            Yuyin Zhou and
+            Frank H Miller and
+            Yunhe Gao and
+            Akshay S Chaudhari and
+            Curtis P Langlotz and
+            Ulas Bagci and
+            Sergio Decherchi and
+            Andrea Cavalli and
+            Arkadiusz Sitek and
+            Kang Wang and
+            Yang Yang and
+            Alan L Yuille and
+            Zongwei Zhou},
+  year = {2026},
+  month = {7},
+  day = {15},
+  howpublished = {Research Square},
+  note = {Preprint, version 1},
+  doi = {10.21203/rs.3.rs-10131590/v1},
+  url = {https://www.researchsquare.com/article/rs-10131590/v1},
+  }
+
+
+# Optional. Email or URL for questions and follow-up.
+contact: psalvad2@jh.edu

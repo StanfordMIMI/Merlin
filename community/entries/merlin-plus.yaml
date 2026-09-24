@@ -1,0 +1,89 @@
+# Copy this file to entries/<your-project-name>.yaml and fill it in.
+# Validate locally with:  python community/validate.py --write --check-links
+# Field reference: community/CONTRIBUTING.md
+
+# Required. Display name of your project, as you want it listed.
+name: Merlin Plus
+
+# Required. One or two sentences, 300 characters max. Plain text, single line.
+description: >
+  Merlin Plus (MICCAI 2026) provides longitudinal metadata (patient IDs and scan dates) and per-voxel annotations for 44 organs and 9 tumor types in the Merlin dataset (Stanford, 25,494 CT scans). Merlin Plus allows AI models to surpass the state-of-the-art in multi-cancer detection and segmentation.
+
+# Required. One of: model, dataset, tool, benchmark, tutorial, other
+category: dataset
+
+# Required. Everyone you want credited. 'affiliation' and 'email' are optional.
+authors:
+  - name: "Pedro R. A. S. Bassi"
+    affiliation: "Johns Hopkins University; Harvard Medical School; Massachusetts General Hospital"
+  - name: "Wenxuan Li"
+    affiliation: "Johns Hopkins University; Harvard Medical School; Massachusetts General Hospital"
+  - name: "Szymon Płotka"
+    affiliation: "Jagiellonian University"
+  - name: "Ruby Honjol"
+    affiliation: "Stanford University"
+  - name: "Jakub Prządo"
+    affiliation: "Warmian-Masurian Cancer Center"
+  - name: "Xinze Zhou"
+    affiliation: "Johns Hopkins University"
+  - name: "Kang Wang"
+    affiliation: "University of California, San Francisco"
+  - name: "Yang Yang"
+    affiliation: "University of California, San Francisco"
+  - name: "Malte Jensen"
+    affiliation: "Stanford University"
+  - name: "Akshay S. Chaudhari"
+    affiliation: "Stanford University"
+  - name: "Curtis P. Langlotz"
+    affiliation: "Stanford University"
+  - name: "Alan L. Yuille"
+    affiliation: "Johns Hopkins University"
+  - name: "Zongwei Zhou"
+    affiliation: "Johns Hopkins University; Johns Hopkins Medicine"
+
+# Required. The license your artifact is released under, e.g. MIT, Apache-2.0,
+# CC BY 4.0, CC BY-NC 4.0, or a Stanford AIMI data use agreement.
+license: CC BY-NC-ND 4.0
+
+# Required. 'homepage' is required; the rest are optional. All must be http(s)
+# URLs that work without a login. Merlin does not host artifacts — these point
+# to wherever you host yours.
+links:
+  homepage: https://github.com/MrGiovanni/MerlinPlus
+  code: https://github.com/MrGiovanni/MerlinPlus
+  data: https://huggingface.co/datasets/AbdomenAtlas/MerlinPlus
+  paper: https://papers.miccai.org/miccai-2026/paper/4063_paper.pdf
+  demo: https://github.com/MrGiovanni/MerlinPlus
+  docs: https://github.com/MrGiovanni/MerlinPlus
+
+# Required. ISO date (YYYY-MM-DD) you are adding this entry.
+added: 2026-09-23
+
+# Optional. Which parts of Merlin your work builds on.
+merlin_components:
+  - Merlin Abdominal CT Dataset
+
+# Optional. Free-form keywords.
+tags:
+  - segmentation
+  - abdominal-ct
+  - cancer detection
+  - cancer segmentation
+  - tumor
+
+# Optional. How people should cite your work, as BibTeX.
+citation: |
+  @InProceedings{BasPed_Merlin_MICCAI2026,
+        author = { Bassi, Pedro R. A. S. AND Li, Wenxuan AND Płotka, Szymon AND Honjol, Ruby AND Prządo, Jakub AND Zhou, Xinze AND Wang, Kang AND Yang, Yang AND Jensen, Malte AND Chaudhari, Akshay S. AND Langlotz, Curtis P. AND Yuille, Alan L. AND Zhou, Zongwei},
+        title = { { Merlin Plus: A Large-Scale, Multi-cancer, Image-Mask-Report Dataset } },
+        booktitle = {Medical Image Computing and Computer Assisted Intervention -- MICCAI 2026},
+        year = {2026},
+        publisher = {Springer Nature Switzerland},
+        volume = {LNCS 16895},
+        month = {September},
+        page = {pending}
+  }
+
+
+# Optional. Email or URL for questions and follow-up.
+contact: psalvad2@jh.edu
