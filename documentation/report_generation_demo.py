@@ -30,8 +30,15 @@ class EosListStoppingCriteria(StoppingCriteria):
     def __call__(
         self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs
     ) -> bool:
-        last_ids = input_ids[:, -len(self.eos_sequence) :].tolist()
-        return self.eos_sequence in last_ids
+        # Stop once every row has produced the EOS sequence, not as soon as any
+        # row has, so that batched generation does not cut off the other rows.
+        # input_ids holds only generated tokens, since generation starts from
+        # inputs_embeds.
+        n = len(self.eos_sequence)
+        return all(
+            any(row[i : i + n] == self.eos_sequence for i in range(len(row) - n + 1))
+            for row in input_ids.tolist()
+        )
 
 
 warnings.filterwarnings("ignore")
